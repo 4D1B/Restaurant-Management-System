@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+  </head>
+
+  <body>
+    <form action="addEntry.php" method="post">
+      Item Name: <br>
+      <input type="text" name="ItemName">
+      <br/>
+      Price: <br>
+      <input type="number" name="Price" >
+      <br>
+      <input type="submit" value="ADD Product">
+    </form>
+  </body>
+</html>
