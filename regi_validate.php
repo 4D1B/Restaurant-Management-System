@@ -14,7 +14,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 $name=$_POST["First_Name"];
 $ln=$_POST["Last_Name"];
 $phone=$_POST["phn"];
-$email=$_POST["email"];
+//$email=$_POST["email"];
 $day=$_POST["day"];
 $month=$_POST["month"];
 $year=$_POST["year"];
@@ -69,10 +69,6 @@ else if(empty($_POST["phn"]) || strlen($_POST["phn"])<11){
 }
 
 
-else if(empty($_POST["email"]) || (strpos($email, '@') == false)){
-	
-	echo "email is required";
-}
 
 
 else if( empty($_POST["pass"])  || empty($rpwd)  || ($_POST["pass"] !== $rpwd) || strlen($_POST["pass"]) <8 ){
@@ -92,7 +88,9 @@ else{
 	
 	global $data;
 	$conn = mysqli_connect("localhost", "root", "","fooddb");
-	$sql2= "insert into regi (first_name, last_name,phn, email,dob,pass) VALUES ('".$_REQUEST["First_Name"]."', '".$_REQUEST["Last_Name"]."','".$_REQUEST["phn"]."' , '".$_REQUEST["email"]."','".$dob."','".$_REQUEST["pass"]."')";
+	$sql2= "UPDATE regi SET first_name = '".$_REQUEST["First_Name"]."' ,  last_name='".$_REQUEST["Last_Name"]."'
+	,phn='".$_REQUEST["phn"]."'   
+	,dob='".$dob."'   ,pass ='".$_REQUEST["pass"]."'    WHERE  email = '".$_COOKIE["email"]."'" ;
 //	$sql="select * from user where uname='".$_REQUEST["firs"]."'";
 	//echo $sql;
 	$result = mysqli_query($conn, $sql2)or die(mysqli_error($conn));
@@ -102,7 +100,7 @@ else{
 		$temp["first_name"]=$row["first_name"];
 		$temp["last_name"]=$row["last_name"];
 		$temp["phn"]=$row["phn"];
-		$temp["email"]=$row["email"];
+		//$temp["email"]=$row["email"];
 		$temp["dob"]=$row["dob"];
 		$temp["pass"]=$row["pass"];
 		$data[]=$temp;
@@ -117,8 +115,8 @@ else{
 	$c=$c+fwrite($file,"-");
 	$c=$c+fwrite($file,$_REQUEST["phn"]);
 	$c=$c+fwrite($file,"-");
-	$c=$c+fwrite($file,$_REQUEST["email"]);
-	$c=$c+fwrite($file,"-");
+	//$c=$c+fwrite($file,$_REQUEST["email"]);
+	//$c=$c+fwrite($file,"-");
 	$c=$c+fwrite($file,$dob);
 	$c=$c+fwrite($file,"-");
 	$c=$c+fwrite($file,md5($_REQUEST["pass"]));

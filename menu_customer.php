@@ -48,7 +48,7 @@ while(! feof($fooddb))
 	
 
 	
-	<br>
+	
 	<?php
 	array_push($food,$name);
 	
@@ -57,8 +57,6 @@ while(! feof($fooddb))
 }	
 
 	
-	
-
 fclose($fooddb);
 
 
@@ -92,7 +90,7 @@ foreach($fooddiffer as $value){
   <source media="(max-width: 200px)" srcset="pizza.jpg">
   
   <img src="pizza.jpg" alt="Picture" style="width:200px;">
-</picture>
+</picture> <br>
 <?php
 $fooddb=array();
 
@@ -101,15 +99,14 @@ $fooddiffer2=array();
 
 
 $fooddb = fopen("pizzadb.txt","r");
-  
-  
+    
 while(! feof($fooddb))  
 {
 	$seepizza= fgets($fooddb);
 	array_push($fooddiffer2,$seepizza);
 	//echo $seepizza;
 	
-	echo "<br>";
+	//echo "<br>";
 	
 	
 	
@@ -147,6 +144,8 @@ foreach($fooddiffer2 as $value){
 <br>
 <br>
 <a href="logout.php">Log Out</a><br/>
+<br/><a href="delete_account.php">delete account</a><br/>  
+<br/><a href="edit_account.php">Edit current info</a><br/>  
 
 
 
