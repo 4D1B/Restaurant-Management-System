@@ -12,6 +12,11 @@
 <br>
  <center> 
 <h2>CART</h2>
+ <?php session_start();
+if(isset($_SESSION["valid"]) && $_SESSION["valid"]=="yes"){
+ ?>
+
+
 
  <p style="font-family:verdana;color:blue;background-color:powderblue;font-size=130%">
 
@@ -75,3 +80,10 @@ foreach($getstr as $str)
 
 
 </p>
+
+
+
+<?php 
+}
+
+?>

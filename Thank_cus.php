@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
 <body>
+ <?php session_start();
+if(isset($_SESSION["valid"]) && $_SESSION["valid"]=="yes"){
+ ?>
+
+
 
  <center>
  <p style="font-family:verdana;color:blue;background-color:powderblue;font-size=130%">
@@ -11,3 +16,7 @@
 
  <input type="submit" value="Go to Menu" />
 
+<?php 
+}
+
+?>

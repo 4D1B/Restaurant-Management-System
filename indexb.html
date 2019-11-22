@@ -16,6 +16,12 @@
   </head>
  <p style="font-family:verdana;color:blue;background-color:powderblue;font-size=130%">
 
+
+ <?php session_start();
+if(isset($_SESSION["valid"]) && $_SESSION["valid"]=="yes"){
+ ?>
+
+
   <body>
   
   
@@ -34,3 +40,11 @@
 </html>
 
 <br/><a href="menu_admin.php">Go To Menu</a><br/>
+
+
+<?php
+ }
+ else {
+	 echo "Login First ";
+ }
+ ?>

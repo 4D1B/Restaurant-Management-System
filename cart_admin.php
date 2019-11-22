@@ -11,19 +11,105 @@
 <br>
 <br>
  <center> 
+ <?php session_start();
+if(isset($_SESSION["valid"]) && $_SESSION["valid"]=="yes"){
+ ?>
+
+
 
  <h2>CART</h2>
- <p style="font-family:verdana;color:blue;background-color:powderblue;font-size=130%">
+ <!- <p style="font-family:verdana;color:blue;font-size=130%">
 <!--Customer order will appear one by one and it will be processed with loop-->
 
 <form action="order_processed_admin.php" method="POST">
 
 
- <p style="font-family:verdana;color:blue;background-color:powderblue;">
+ <p style="font-family:verdana;color:blue;">
+
+ 
+<?PHP
+ global $data;
+	$conn = mysqli_connect("localhost", "root", "","fooddb");
+	$count=0;
+	$sql= "select * from cart order by time DESC";
+	//$sql="Insert into pass from regi where email='".$_REQUEST["email"]."'";
+	//echo $sql;
+	$result = mysqli_query($conn, $sql)or die(mysqli_error($conn));
+	while($row = mysqli_fetch_assoc($result)) {
+		//echo $row["uname"];echo "<br/>";
+		//print_r($row);
+		$temp["username"]=$row["username"];
+		$temp["item"]=$row["item"];
+		$temp["time"]=$row["time"];
+		$data[]=$temp;
+		$count++;
+	}
+ 
+
+ ?>
+ 
+ 
+ 
+ <form action="order_processed_admin.php" method="POST">
+
+  
+  
+
+
+ <?php 
+ 
+ // echo $count;
+  $i= $count-1;
+  while($i!==-1)
+  { 
+	  {
+	  echo nl2br ( "\n");
+	  echo "\r\n";
+	  $new=  implode(" | ",$data[$i]);
+	  ?>
+	  <input type="checkbox" name="data[]" value="<?php echo $data[$i]["name"] ?>" > <?php echo  $new  ?> <br>
+	  <?php
+	  }
+	  $i--;
+	  
+  }  
+  
+  ?>
 
  
  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 <?php
+
+/*
 $fooddb = fopen("cart.txt","r");
 
 $file='cart.txt';
@@ -90,4 +176,16 @@ foreach($fooddiffer as $value){
  
  
   
-<br/><a href="menu_admin.php">Go To Menu</a><br/>
+<br/><a href="menu_admin.php">Go To Menu</a><br/><?php 
+
+*/
+?>
+
+
+
+<?php
+ }
+ else {
+	 echo "Login First ";
+ }
+ ?>

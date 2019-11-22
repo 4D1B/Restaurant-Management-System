@@ -1,3 +1,8 @@
+
+ <?php session_start();
+if(isset($_SESSION["valid"]) && $_SESSION["valid"]=="yes"){
+ ?>
+
 <?php
 
 
@@ -39,3 +44,10 @@
 
 
 
+
+<?php
+ }
+ else {
+	 echo "Login First ";
+ }
+ ?>

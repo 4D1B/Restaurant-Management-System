@@ -12,9 +12,15 @@
 <br>
  <center> 
  
- <p style="font-family:verdana;color:blue;background-color:powderblue;font-size=130%">
+ 
+  <?php session_start();
+if(isset($_SESSION["valid"]) && $_SESSION["valid"]=="yes"){
+ ?>
+ 
+
  
 <?php
+
 print_r($_REQUEST);
 $file=fopen('burgerdb.txt','a') or die("fle open error");
 $c=0;
@@ -38,3 +44,9 @@ else{
 <br/><a href="menu_admin.php">Go To Menu</a><br/>
 
 
+
+
+<?php 
+}
+
+?>

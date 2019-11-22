@@ -11,6 +11,14 @@
 <br>
 <br>
  <center> 
+ 
+  <?php session_start();
+if(isset($_SESSION["valid"]) && $_SESSION["valid"]=="yes"){
+ ?>
+
+
+
+ 
 <h2>Adding Item to Menu</h2>
  <p style="font-family:verdana;color:blue;background-color:powderblue;font-size=130%">
 
@@ -39,3 +47,10 @@ Food Price:
    
  
   <div>
+  
+<?php
+ }
+ else {
+	 echo "Login First ";
+ }
+ ?>

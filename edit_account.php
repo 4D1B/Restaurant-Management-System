@@ -12,6 +12,13 @@
 <br>
  <center> 
 
+
+ <?php session_start();
+if(isset($_SESSION["valid"]) && $_SESSION["valid"]=="yes"){
+ ?>
+
+
+
 <form action="regi_validate.php" method="post">
 <center>
  <p style="font-family:verdana;color:blue;background-color:powderblue;font-size=130%">
@@ -171,3 +178,12 @@ Year
 
 
 <a href="home.php">Home Page</a><br/>
+
+
+
+<?php
+ }
+ else {
+	 echo "Login First ";
+ }
+ ?>

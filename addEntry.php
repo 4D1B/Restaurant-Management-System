@@ -12,7 +12,9 @@
 <br>
  <center> 
 
-
+ <?php session_start();
+if(isset($_SESSION["valid"]) && $_SESSION["valid"]=="yes"){
+ ?>
 
 
 <?php
@@ -36,4 +38,8 @@ else{
 <br/><a href="login.php">Login</a><br/>
 
 
+<?php 
+}
+
 ?>
+

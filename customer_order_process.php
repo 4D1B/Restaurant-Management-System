@@ -1,5 +1,12 @@
  <p style="font-family:verdana;color:blue;background-color:powderblue;font-size=130%">
 
+
+ <?php session_start();
+if(isset($_SESSION["valid"]) && $_SESSION["valid"]=="yes"){
+ ?>
+
+
+
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') 
@@ -41,3 +48,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
 
 
 ?>
+
+
+<?php
+ }
+ else {
+	 echo "Login First ";
+ }
+ ?>

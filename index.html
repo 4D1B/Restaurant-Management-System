@@ -12,6 +12,11 @@
 <br>
  <center> 
     <title></title>
+ <?php session_start();
+if(isset($_SESSION["valid"]) && $_SESSION["valid"]=="yes"){
+ ?>
+
+
   
  <p style="font-family:verdana;color:blue;background-color:powderblue;font-size=130%">
   <body>
@@ -29,3 +34,13 @@
 
 
 <br/><a href="menu_admin.php">Go To Menu</a><br/>
+
+
+
+
+<?php
+ }
+ else {
+	 echo "Login First ";
+ }
+ ?>

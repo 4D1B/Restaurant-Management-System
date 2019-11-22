@@ -14,3 +14,6 @@ adib@yahoo.com Ordered=> chicken burger-500
 adib@yahoo.com Ordered=> Chicken Burger-200bdt
 adib@yahoo.com Ordered=> Beef Burger-250bdt
 adib@yahoo.com Ordered=> Beef Pizza-800bdt
+adibz43@yahoo.com Ordered=> chicken burger-400
+adibz43@yahoo.com Ordered=> Beef Pizza-800bdt
+adibz43@yahoo.com Ordered=> beef pizza-1000

@@ -32,7 +32,8 @@ session_start();
 foreach($db as $k=>$v){
 	if($_REQUEST["email"]==$k && md5($_REQUEST["password"])==$v && md5($_REQUEST["skey"])==md5("00001")){
 		echo "Login success";
-	
+	//	setcookie("username",$_REQUEST["username"],time()+50000);
+		setcookie("email",$_REQUEST["email"],time()+50000);
 		$_SESSION["valid"]="yes";
 		$_SESSION["email"]=$_REQUEST["email"];
 		$flag=1;

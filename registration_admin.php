@@ -17,11 +17,10 @@
 
 <h1>Registration form</h1>
 
- <p style="font-family:verdana;color:blue;background-color:powderblue;font-size=130%">
+ <p>
 
-First Name:
-<input type="text" name="First_Name"><br/>
-Last Name:
+First Name:  	<input type="text" name="First_Name"><br/>
+Last Name			:
 <input type="text" name="Last_Name"><br/>
 Password:
 <input type="password" name="pass"><br/>
@@ -178,6 +177,6 @@ Year
 
 <input type="submit" name="sbt" value="submit" />
 </form>
-
+<br>
 <a href="login_new_admin.php">Login for admin</a><br/>
 <a href="home.php">Home Page</a><br/>

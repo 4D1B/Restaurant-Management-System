@@ -11,6 +11,12 @@
 <br>
 <br>
  <center> 
+  <?php session_start();
+if(isset($_SESSION["valid"]) && $_SESSION["valid"]=="yes"){
+ ?>
+
+
+
  <p style="font-family:verdana;color:blue;background-color:powderblue;font-size=130%">
 <?php
 
@@ -64,3 +70,13 @@ foreach($_POST['food'] as $qty)
 
 <h1>Thank you for Ordering,Sir</h1>
 <br/><a href="menu_customer.php">Go Back To Order</a><br/>  
+
+
+
+
+<?php
+ }
+ else {
+	 echo "Login First ";
+ }
+ ?>
