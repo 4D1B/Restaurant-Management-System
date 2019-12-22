@@ -63,11 +63,12 @@ if(isset($_SESSION["valid"]) && $_SESSION["valid"]=="yes"){
   while($i!==-1)
   { 
 	  {
+			
 	  echo nl2br ( "\n");
 	  echo "\r\n";
 	  $new=  implode(" | ",$data[$i]);
 	  ?>
-	  <input type="checkbox" name="data[]" value="<?php echo $data[$i]["name"] ?>" > <?php echo  $new  ?> <br>
+	  <input type="checkbox" name="data[]" value="<?php echo $data[$i]["username"]."+".$data[$i]["item"]."+".$data[$i]["time"] ?>" ><?php echo  $new  ?> <br>
 	  <?php
 	  }
 	  $i--;
@@ -76,6 +77,9 @@ if(isset($_SESSION["valid"]) && $_SESSION["valid"]=="yes"){
   
   ?>
 
+<input type="submit" name="submit" Value="Submit"/>
+
+<a href="menu_admin.php">Go back to Menu</a><br/>
  
  
  

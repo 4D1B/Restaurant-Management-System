@@ -13,6 +13,7 @@
  <center> 
  <p style="font-family:verdana;color:blue;background-color:powderblue;font-size=130%">
 <?php
+include("lib.php");
 $db=array();
 
 $file=fopen("db.txt","r") or die("file error");
@@ -30,7 +31,17 @@ while($c=fgets($file)){
 $flag=0;
 session_start();
 foreach($db as $k=>$v){
-	if($_REQUEST["email"]==$k && md5($_REQUEST["password"])==$v && md5($_REQUEST["skey"])==md5("00001")){
+	loadFromXML("admin");
+	
+	if(sizeof($data)>0)
+	{
+			foreach($data as $a){
+		$var= $a["skey"];
+	
+	}
+	}
+	
+	if($_REQUEST["email"]==$k && md5($_REQUEST["password"])==$v && md5($_REQUEST["skey"])==md5($var)){
 		echo "Login success";
 	//	setcookie("username",$_REQUEST["username"],time()+50000);
 		setcookie("email",$_REQUEST["email"],time()+50000);
@@ -41,6 +52,7 @@ foreach($db as $k=>$v){
 	}
 }
 if($flag==0){
+			echo $var;
 	echo "<p style='color:red'>Wrong credentials</p>";
 	
 }

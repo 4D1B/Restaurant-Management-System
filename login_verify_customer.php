@@ -15,6 +15,7 @@
  <p style="font-family:verdana;color:blue;background-color:powderblue;font-size=130%">
 
 <?php
+include("lib.php");
 $db=array();
 
 $file=fopen("db.txt","r") or die("file error");
@@ -28,8 +29,8 @@ while($c=fgets($file)){
 
 print_r($db);
 
-
 session_start();
+
 global $data;
 	$conn = mysqli_connect("localhost", "root", "","fooddb");
 	

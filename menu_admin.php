@@ -25,9 +25,47 @@ global $data;
 		$temp["type"]=$row["type"];
 		$temp["name"]=$row["name"];
 		$temp["price"]=$row["price"];
+		$temp["picture"]=$row["picture"];
 		$data[]=$temp;
 		$count++;
 	}
+	
+	$counttype=0;
+    $newcount=0;
+	$check=array();
+	foreach ($data as $row) {
+    echo $row['type'];
+	array_push($check,$row['type']);
+	$newcount=$newcount+1;
+	for($i=1;$i<$newcount;$i++)
+    {
+		if(strcasecmp  ($row['type'],$check[$i-1])==0)
+		{	
+			$counttype++;
+			
+			break;
+		}
+
+	}
+$cou= $newcount-$counttype;
+echo $cou;
+}
+	$out = array();
+
+foreach ($data as $item) {
+    if (!in_array($item['type'], $out)) {
+        $out[] = $item['type'];
+    }
+}
+
+print_r($out);
+
+
+
+
+
+
+
 	
 
 	
@@ -67,6 +105,8 @@ else{ echo "hello FROM SESSION " . $_SESSION["email"];
 																			
 																			<a href="indexp.html">Edit Pizza info</a>
 																			
+																			<a href="indextype.html">Add new Type</a>
+																			
 																			<a href="addnewitem.html">Add New Item</a>
 																			
 																			<a href="deleteitem.html">Delete Item</a>
@@ -81,56 +121,68 @@ else{ echo "hello FROM SESSION " . $_SESSION["email"];
 <picture>
 <!  <source media="(max-width: 200px)" srcset="pizza.jpg">
   
-  <img src="burger.jpg" alt="Picture" width="300" height="300" align="left"> 
-  <?php 
- 
- // echo $count;
-  $i= $count-1;
-  while($i!==-1)
-  { 
-	  if($data[$i]["type"]=="Burger"){
-	  echo nl2br ( "\n");
-	  echo "\r\n";
-	  echo  implode(" | ",$data[$i]);
-	  }
-	  $i--;
+  
+  <?php
+   $typenamer=array();
+    $n=0;   
+  //get type name
+  foreach($out as $n)
+  {
+	  array_push($typenamer,$n);
 	  
-  }  
+  }
+   $n= count($typenamer);
   
   ?>
-
-
-<br><br>
-
-<br><br>
-<br><br><br><br><br><br>
-<br><br>
-
-
- <! <source media="(max-width: 100px)" srcset="pizza.jpg"> 
   
-  <img src="pizza.jpg" alt="Picture" width="300" height="300" align="left">
+ 
+
+<?php  $j=$cou-1; 
+echo $j;
+
+//$img= 
+while($j!==-1){ 
+
+?>
+<div>
+ <! <source media="(max-width: 100px)" srcset="pizza.jpg"> 
+   
+  <img src="<?php echo $data[$j]["picture"] ?>" alt="Picture" width="300" height="300" align="left">
   <?php 
+   echo $cou;
+   echo $data[$j]["picture"];
+ // print_r($data);
   $i=0;
   //foreach($data as $k=>$v )
   {
 	  
  // echo $count;
-  $i= $count-1;
-  while($i!==-1)
+  $i= 0;
+ // echo $i;
+  
+ 
+ 
+  while($i!==count($data))
   { 
-      
-    //  echo $i;
-	  if($data[$i]["type"]=="Pizza"){
-	  echo nl2br ( "\n");
-	  echo "\r\n";
+ // PRINT_R($data);    
+    //  echo $data[$i]["type"]; 
+//	echo $out[$i];
+	  if($data[$i]["type"]==$out[$j]){
+	  	  
+	 echo nl2br ( "\n");
+	 echo "\r\n";
 	  echo  implode(" | ",$data[$i]);
 	  }
-	  $i--;
+	  $i++;
 	  
-  } 
+  }?>
+ <br><br><br><br><?php  
   }
-  ?>
+ 
+$j--;
+}
+ ?>
+ </div>
 </picture>
 
 

@@ -1,20 +1,9 @@
 
+
+
 <!DOCTYPE html>
 <html>
-<body style="font-family:verdana;color:blue;font-size=130%">
-
-
-<br>
-<br>
-<br>
-<br><br>
-<br>
-<br>
- <center> 
-<h2>Menu</h2>
-
-
-
+<body><h2>Menu</h2>
 <?php 
 
 
@@ -36,9 +25,47 @@ global $data;
 		$temp["type"]=$row["type"];
 		$temp["name"]=$row["name"];
 		$temp["price"]=$row["price"];
+		$temp["picture"]=$row["picture"];
 		$data[]=$temp;
 		$count++;
 	}
+	
+	$counttype=0;
+    $newcount=0;
+	$check=array();
+	foreach ($data as $row) {
+    //echo $row['type'];
+	array_push($check,$row['type']);
+	$newcount=$newcount+1;
+	for($i=1;$i<$newcount;$i++)
+    {
+		if(strcasecmp  ($row['type'],$check[$i-1])==0)
+		{	
+			$counttype++;
+			
+			break;
+		}
+
+	}
+$cou= $newcount-$counttype;
+//echo $cou;
+}
+	$out = array();
+
+foreach ($data as $item) {
+    if (!in_array($item['type'], $out)) {
+        $out[] = $item['type'];
+    }
+}
+
+//print_r($out);
+
+
+
+
+
+
+
 	
 
 	
@@ -71,7 +98,21 @@ else{ echo "hello FROM SESSION " . $_SESSION["email"];
 <br>
 <br>
 <br/>
+<pre>
+																			<a href="cart_admin.php">Go To Cart</a>
 
+																			<a href="indexb.html">Edit Burger info</a>
+																			
+																			<a href="indexp.html">Edit Pizza info</a>
+																			
+																			<a href="indextype.html">Add new Type</a>
+																			
+																			<a href="addnewitem.html">Add New Item</a>
+																			
+																			<a href="deleteitem.html">Delete Item</a>
+																			
+																			<a href="Updateitem.html">Update Item</a>
+</pre>
  <center>
  
 
@@ -80,167 +121,156 @@ else{ echo "hello FROM SESSION " . $_SESSION["email"];
 <picture>
 <!  <source media="(max-width: 200px)" srcset="pizza.jpg">
   
-  <img src="burger.jpg" alt="Picture" width="300" height="300" align="left"> 
   
-  <form action="cartphp.php">
-  
-  
-
-  <?php 
- 
- // echo $count;
-  $i= $count-1;
-  while($i!==-1)
-  { 
-	  if($data[$i]["type"]=="Burger"){
-	  echo nl2br ( "\n");
-	  echo "\r\n";
-	  $new=  implode(" | ",$data[$i]);
-	  ?>
-	  <input type="checkbox" name="data[]" value="<?php echo $data[$i]["name"] ?>" > <?php echo  $new  ?> <br>
-	  <?php
-	  }
-	  $i--;
+  <?php
+   $typenamer=array();
+    $n=0;   
+  //get type name
+  foreach($out as $n)
+  {
+	  array_push($typenamer,$n);
 	  
-  }  
+  }
+   $n= count($typenamer);
   
   ?>
   
+ 
 
-<br><br>
+<?php  $j=$cou-1; 
+echo $j;
 
-<br><br>
-<br><br><br><br><br><br>
-<br><br>
+//$img= 
+while($j!==-1){ 
 
-
+?>
+<div>
  <! <source media="(max-width: 100px)" srcset="pizza.jpg"> 
-  
-  <img src="pizza.jpg" alt="Picture" width="300" height="300" align="left">
-
-  
-  
-
-
+   
+  <img src="<?php echo $data[$j]["picture"] ?>" alt="Picture" width="300" height="300" align="left">
   <?php 
- 
+  // echo $cou;
+  // echo $data[$j]["picture"];
+ // print_r($data);
+  $i=0;
+  //foreach($data as $k=>$v )
+  {
+	  
  // echo $count;
-  $i= $count-1;
-  while($i!==-1)
-  { 
-	  if($data[$i]["type"]=="Pizza"){
-	  echo nl2br ( "\n");
-	  echo "\r\n";
+  $i= 0;
+ // echo $i;
+  
+ 
+ 
+  while($i!==count($data))
+  { $firstone=0;
+ // PRINT_R($data);    
+    //  echo $data[$i]["type"]; 
+//	echo $out[$i];
+	  if($data[$i]["type"]==$out[$j]){
+	//  	  if($firstone==0){
+	 echo nl2br ( "\n");
+	 echo "\r\n";
 	  $new=  implode(" | ",$data[$i]);
 	  ?>
-	  <input type="checkbox" name="data[]" value="<?php echo $data[$i]["name"] ?>" ><?php echo  $new  ?> <br>
+	  <input type="checkbox" name="data[]" value="<?php echo $data[$i]["type"].$data[$i]["name"].$data[$i][""] ?>" ><?php echo  $new  ?> <br>
 	  <?php
 	  }
-	  $i--;
+	  $firstone++;
 	  
-  }  
-  
-  ?>
-    <input type="submit" value="Submit">
-	</form>
+	  $i++;
+	  
+  }?>
+ <br><br><br><br><?php  
+  }
+ 
+$j--;
+}
+ ?>
+ </div>
 </picture>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-
-
-
-
-
-
-<picture>
-  <source media="(max-width: 200px)" srcset="burger.jpg">
-  
-  <img src="burger.jpg" alt="Picture" style="width:200px;">
-</picture>
-<?php 
-session_start();
-if(isset($_SESSION["valid"]) && $_SESSION["valid"]=="yes"){
-
-
-/*
-$username= $_SESSION["email"];
-
-
-
-
-
-
-
-
-
-
-
-
+<?php	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//comment out start
+/* 
 $fooddb=array();
 
 
@@ -262,31 +292,35 @@ while(! feof($fooddb))
 	
 
 	
-	
-<?php
+	<br>
+	<?php
 	array_push($food,$name);
 	
 
-	} $x++; echo "<br>";
+	} $x++;
+	
+	
+	 if ('' === trim($seeburger)) {
+        
+        continue;
+    }
+	else
+	{
+		//echo $seeburger;
+	}
+	echo "<br>";
 }	
 
 	
+	
+
 fclose($fooddb);
 
-
-foreach($fooddiffer as $value){
-
-	$value = implode("\n", array_filter(explode("\n", $value)));
-	if($value == "") {} else{
 ?>
 
-<form action="cart_customer1.php" method="POST">
-  <input type="checkbox" name="food[]" value="<?php echo $username ." Ordered=> ". $value ."\r\n" ?> "> <?php echo $value ?> <br>
 
 
 <?php
-	}
-}
 
 //print_r($fooddiffer);
 //print_r($food);
@@ -301,26 +335,26 @@ foreach($fooddiffer as $value){
 ?>
 
 <picture>
-  <source media="(max-width: 200px)" srcset="pizza.jpg">
+  <source media="(max-width: 100px)" srcset="pizza.jpg">
   
-  <img src="pizza.jpg" alt="Picture" style="width:200px;">
-</picture> <br>
+  <img src="pizza.jpg" alt="Picture" width="300" height="300" align="left">
+</picture>
 <?php
 $fooddb=array();
 
-$food2=array();
-$fooddiffer2=array();
+
 
 
 $fooddb = fopen("pizzadb.txt","r");
-    
+  
+  
 while(! feof($fooddb))  
 {
 	$seepizza= fgets($fooddb);
-	array_push($fooddiffer2,$seepizza);
+	array_push($fooddiffer,$seepizza);
 	//echo $seepizza;
 	
-	//echo "<br>";
+	echo "<br>";
 	
 	
 	
@@ -330,43 +364,24 @@ while(! feof($fooddb))
 
 fclose($fooddb);
 
-foreach($fooddiffer2 as $value){
+	?>
 
-	$value = implode("\n", array_filter(explode("\n", $value)));
-	if($value == "") {} else{
-?>
-
-<form action="cart_customer1.php" method="POST">
-  <input type="checkbox" name="food[]" value="<?php echo $username ." Ordered=> ". $value ."\r\n" ?> "> <?php echo $value ?> <br>
-  
-
+ 
 
 <?php
-	}
-}
+	
 
-?> 
-	<input type="submit" name="submit" value="Submit"/>
-<?php
 
 //print_r($ar);
 
+*/ ////comment outted
 
-
-
-
-
-*/
 ?>
 
+<br>
+<br>
 
--->
-<br>
-<br>
-<br>
 <a href="logout.php">Log Out</a><br/>
-<br/><a href="delete_account.php">delete account</a><br/>  
-<br/><a href="edit_account.php">Edit current info</a><br/>  
 
 
 
@@ -385,31 +400,13 @@ foreach($fooddiffer2 as $value){
 
 
 
+<?php
+ }
+ else {
+	 echo "Login First ";
+ }
+ ?>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</p>
-<?php 
-}
-}
-
-
-?>
+	  

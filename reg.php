@@ -12,13 +12,13 @@
 <br>
  <center> 
 
-<form action="reg_validate.php" method="post">
+<form action="reg_validate.php" method="post"  >
 <center>
  <p style="font-family:verdana;color:blue;background-color:powderblue;font-size=130%">
 <h1>Registration form</h1>
 
 First Name:
-<input type="text" name="First_Name"><br/>
+<input type="text" name="First_Name"  onkeypress="myFunction()" id="demo"><br/>
 Last Name:
 <input type="text" name="Last_Name"><br/>
 Password:
@@ -163,13 +163,52 @@ Year
   
   <div>
   
- Email: <input type="text" name="email"><br>
+ Email: <input type="text" name="email"   ><br>
  
  </div>
 
 
 <input type="submit" name="sbt" value="submit" />
+
+
+
+
+<script>
+var n= document.getelementbyid("First_Name").value;
+
+
+var name  = "asdfa";
+function myFunction(){
+		alert(n);
+	
+}
+
+</script>
 </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <a href="login_new_customer.php">Login For Customer</a><br/>

@@ -1,0 +1,363 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<br>
+<br>
+<br>
+<br><br>
+<br>
+<br>
+ <center> 
+
+ 
+<script>
+
+
+//var fn= document.getElementbyid("fn").innerHTML;
+var c=0;
+var flag = true;
+//var name  = "asdfa";
+function myFunction(value){
+		var fn = document.getElementById("fn").value;
+		
+		if(fn.length <3)
+         {			
+				flag= false;
+				
+				document.getElementById('errorname').innerHTML="This is not a valid name! Too small";
+				//alert("First Name is too small");
+		 }
+		 else
+		 {
+			
+			c=1;flag= true;
+			document.getElementById('errorname').innerHTML="This is a valid name!";
+		 }
+}
+function myFunction2(value) {
+		var ln = document.getElementById("ln").value;
+		
+		 if(ln.length <3)
+         {
+				flag= false;
+				document.getElementById('errorname2').innerHTML="This is not a valid name! Too small";
+				//alert("First Name is too small");
+		 }
+		 else
+		 {c=1;flag= true;
+			document.getElementById('errorname2').innerHTML="This is a valid name!";
+		 }
+		 }
+function myFunction3(value) {
+		 var pd = document.getElementById("pd").value;
+		
+		 if(pd.length <9) 
+         {
+				flag= false;
+				document.getElementById('errorname3').innerHTML="This is not a valid pass! Too pass";
+				//alert("First Name is too small");
+		 }
+		 else
+		 {  flag= true;
+			document.getElementById('errorname3').innerHTML="This is a valid pass!";
+		 }
+		 }
+
+
+function myFunction4(value) {
+		var pd = document.getElementById("pd").value;
+		 var cpd = document.getElementById("cpd").value;
+		//var day = document.getElementById("dayddl").value;
+		//var mon = document.getElementById("monthddl").value;
+	//	var year = document.getElementById("blah").value;
+	//	var gen = document.getElementById("gen").value;
+		
+		 if((cpd.length <9) || (pd !== cpd ))
+         {
+				flag= false;
+				document.getElementById('errorname4').innerHTML="This is not a valid pass! Too small";
+				//alert("First Name is too small");
+		 }
+		 else
+		 {c=1;flag= true;
+			document.getElementById('errorname4').innerHTML="This is a valid pass!";
+		 }
+		 }
+		 
+
+		 function myFunction5(value) {
+		 var phn = document.getElementById("phn").value;
+		
+		 if((phn.length <11) || (phn.length >11) || (/^\d+$/.test(phn))==false )
+         {
+				flag= false;
+				document.getElementById('errorname5').innerHTML="This is not a valid phn! Too small";
+				//alert("First Name is too small");
+		 }
+		 else
+		 {c=1;flag= true;
+			document.getElementById('errorname5').innerHTML="This is a valid phn !";
+		 }
+		 }
+		 function myFunction6(value) {
+		 var email = document.getElementById("email").value;
+		 if((email.length <5) || (email.includes("@"))==false || (email.includes("."))==false)
+         {flag= false;
+				document.getElementById('errorname6').innerHTML="This is not a valid email! Too small";
+				//alert("First Name is too small");
+		 }
+		 else
+		 {c=1;
+		 flag= true;
+			document.getElementById('errorname6').innerHTML="This is a valid email!";
+		 }
+		 }
+				
+		 
+	
+function myFunction7(value) {
+		//var pd = document.getElementById("pd").value;
+	//	 var cpd = document.getElementById("cpd").value;
+		var day = document.getElementById("dayddl").value;
+		var mon = document.getElementById("monthddl").value;
+	var year = document.getElementById("blah").value;
+	//	var gen = document.getElementById("gen").value;
+		
+		 if((day.length <1) ||(mon.length <1) || (year.length <1))
+         {
+				document.getElementById('errorname7').innerHTML="This is not a valid dob! Too small";
+				//alert("First Name is too small");
+		 }
+		 else
+		 {c=1;
+			document.getElementById('errorname7').innerHTML="This is a valid dob!";
+		 }
+		 }
+		 
+function myFunction8(value) {
+		//var pd = document.getElementById("pd").value;
+	//	 var cpd = document.getElementById("cpd").value;
+		var day = document.getElementById("dayddl").value;
+		var mon = document.getElementById("monthddl").value;
+	var year = document.getElementById("blah").value;
+		var gen = document.getElementById("gen").value;
+		
+		 if((gen.length <1))
+         {
+				document.getElementById('errorname8').innerHTML="This is not a valid gen! Too small";
+				//alert("First Name is too small");
+		 }
+		 else
+		 {c=1;
+			document.getElementById('errorname8').innerHTML="This is a valid gen!";
+		 }
+		 }
+		 
+		 function validate()
+		 {
+			if(flag == false)
+			{
+				alert("Not all submitted yet");
+			}
+		   return flag;
+		 }
+
+</script>
+ 
+ 
+<form action="reg_validate.php" method="post"  >
+<center>
+ <p style="font-family:verdana;color:blue;background-color:powderblue;font-size=130%">
+<h1>Registration form</h1>
+
+First Name:
+<input type="text" name="First_Name"  onkeyup="myFunction(this.value)" id="fn" >  <span id="errorname">    </span><br/>
+Last Name:
+<input type="text" name="Last_Name"   onkeyup="myFunction2(this.value)" id="ln"><span id="errorname2">    </span><br/><br/>
+Password:
+<input type="password" name="pass" onkeyup="myFunction3(this.value)" id="pd"> <span id="errorname3">    </span><br/>  <br/>
+Confirm Password:
+<input type="password" name="confpass"  onkeyup="myFunction4(this.value)" id="cpd"><span id="errorname4">    </span><br/> <br/>
+
+
+
+  <div>
+   <span id="errorname7">    </span>
+ DoB:
+
+  
+  
+  
+  
+  Day
+<select name='day' id='dayddl' onkeyup="myFunction7(this.value)">
+<option value='1'>1</option>
+<option value='2'>2</option>
+<option value='3'>3</option>
+<option value='4'>4</option>
+<option value='5'>5</option>
+<option value='6'>6</option>
+<option value='7'>7</option>
+<option value='8'>8</option>
+<option value='9'>9</option>
+<option value='10'>10</option>
+<option value='11'>11</option>
+<option value='12'>12</option>
+<option value='13'>13</option>
+<option value='14'>14</option>
+<option value='15'>15</option>
+<option value='16'>16</option>
+<option value='17'>17</option>
+<option value='18'>18</option>
+<option value='19'>19</option>
+<option value='20'>20</option>
+<option value='21'>21</option>
+<option value='22'>22</option>
+<option value='23'>23</option>
+<option value='24'>24</option>
+<option value='25'>25</option>
+<option value='26'>26</option>
+<option value='27'>27</option>
+<option value='28'>28</option>
+<option value='29'>29</option>
+<option value='30'>30</option>
+<option value='31'>31</option>
+</select>
+
+
+Month
+<select name='month' id='monthddl' onkeyup="myFunction7(this.value)">
+<option value='1'>1</option>
+<option value='2'>2</option>
+<option value='3'>3</option>
+<option value='4'>4</option>
+<option value='5'>5</option>
+<option value='6'>6</option>
+<option value='7'>7</option>
+<option value='8'>8</option>
+<option value='9'>9</option>
+<option value='10'>10</option>
+<option value='11'>11</option>
+<option value='12'>12</option>
+</select>
+
+
+Year
+
+<select name='year' id='blah' onkeyup="myFunction7(this.value)">
+<option value='1947'>1947</option>
+<option value='1948'>1948</option>
+<option value='1949'>1949</option>
+<option value='1950'>1950</option>
+<option value='1951'>1951</option>
+<option value='1952'>1952</option>
+<option value='1953'>1953</option>
+<option value='1954'>1954</option>
+<option value='1955'>1955</option>
+<option value='1956'>1956</option>
+<option value='1957'>1957</option>
+<option value='1958'>1958</option>
+<option value='1959'>1959</option>
+<option value='1960'>1960</option>
+<option value='1961'>1961</option>
+<option value='1962'>1962</option>
+<option value='1963'>1963</option>
+<option value='1964'>1964</option>
+<option value='1965'>1965</option>
+<option value='1966'>1966</option>
+<option value='1967'>1967</option>
+<option value='1968'>1968</option>
+<option value='1969'>1969</option>
+<option value='1970'>1970</option>
+<option value='1971'>1971</option>
+<option value='1972'>1972</option>
+<option value='1973'>1973</option>
+<option value='1974'>1974</option>
+<option value='1975'>1975</option>
+<option value='1976'>1976</option>
+<option value='1977'>1977</option>
+<option value='1978'>1978</option>
+<option value='1979'>1979</option>
+<option value='1980'>1980</option>
+<option value='1981'>1981</option>
+<option value='1982'>1982</option>
+<option value='1983'>1983</option>
+<option value='1984'>1984</option>
+<option value='1985'>1985</option>
+<option value='1986'>1986</option>
+<option value='1987'>1987</option>
+<option value='1988'>1988</option>
+<option value='1989'>1989</option>
+<option value='1990'>1990</option>
+<option value='1991'>1991</option>
+<option value='1992'>1992</option>
+<option value='1993'>1993</option>
+</select>
+  
+ </div> 
+
+
+ <div>
+  Gender: <br><span id="errorname8">    </span>
+ <input type="radio" name="gender" value="male"  onkeyup="myFunction8(this.value)" id="gen"> Male <br>
+  <input type="radio" name="gender" value="female" onkeyup="myFunction8(this.value)" id="gen"> Female<br>
+  <input type="radio" name="gender" value="other" onkeyup="myFunction8(this.value)" id="gen"> Other
+  </div>
+  
+  
+  
+  <div>
+  
+    Phone:
+  <input type="text" name="phn" onkeyup="myFunction5(this.value)" id="phn">  <span id="errorname5">    </span><br/>
+ 
+</div>
+  
+  
+  <div>
+  
+ Email: <input type="text" name="email" onkeyup="myFunction6(this.value)" id="email"  ><span id="errorname6">    </span><br/><br>
+ 
+ </div>
+
+
+<input type="submit" onclick="return validate()" name="sbt" value="submit"  />
+
+
+
+
+
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<a href="login_new_customer.php">Login For Customer</a><br/>
+
+
+<a href="home.php">Home Page</a><br/>

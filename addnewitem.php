@@ -40,3 +40,5 @@ global $data;
 	
 	
 	</body>
+	
+<a href="menu_admin.php">Go To Menu</a><br/>
